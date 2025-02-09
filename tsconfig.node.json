@@ -8,6 +8,16 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "types": ["node"],
+    "baseUrl": "src",
+    "paths": {
+      "assets/*": ["assets/*"],
+      "hooks/*": ["hooks/*"],
+      "contexts/*": ["contexts/*"],
+      "routes/*": ["routes/*"],
+      "pages/*": ["pages/*"],
+      "utils/*": ["utils/*"],
+      "components/*": ["components/*"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",

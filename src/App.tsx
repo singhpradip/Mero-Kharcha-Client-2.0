@@ -1,9 +1,13 @@
-import { LogoJpg } from "./assets/logos";
+import { ThemeProvider } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
+import { theme } from "./theme";
+import { Test } from "pages/Test";
 
 export const App = () => {
   return (
-    <div>
-      <img src={LogoJpg} alt="logo" />
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Test />
+    </ThemeProvider>
   );
 };

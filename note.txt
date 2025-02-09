@@ -1,0 +1,29 @@
+
+# To use alias in vite, you need to update these files :
+- tsconfig.app.json
+- tsconfig.node.json
+- vite.config.ts
+
+* in tsconfig.app.json and tsconfig.node.json, you need to add the following :
+```json
+"baseUrl": "src",
+"paths": {
+  "assets/*": ["assets/*"],
+  "hooks/*": ["hooks/*"],
+  "contexts/*": ["contexts/*"],
+  "routes/*": ["routes/*"],
+  "pages/*": ["pages/*"],
+  "utils/*": ["utils/*"],
+  "components/*": ["components/*"],
+}
+```
+
+* in vite.config.ts, you need to add the following :
+```ts
+alias: [
+  {
+    find: "assets",
+    replacement: path.resolve(__dirname, "src/assets"),
+  },
+]
+```

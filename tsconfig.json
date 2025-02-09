@@ -18,7 +18,8 @@
       "routes/*": ["routes/*"],
       "pages/*": ["pages/*"],
       "utils/*": ["utils/*"],
-      "components/*": ["components/*"]
+      "components/*": ["components/*"],
+      "assets/*": ["assets/*"]
     },
 
     /* Bundler mode */
