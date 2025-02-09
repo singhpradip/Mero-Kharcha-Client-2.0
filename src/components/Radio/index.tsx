@@ -33,6 +33,7 @@ export const Radio = <T extends FieldValues>({
           control={
             <MuiRadio
               {...radioProps}
+              sx={{ marginLeft: "-11px" }}
               checked={!!value}
               onChange={(_, checked) => onChange(checked)}
             />

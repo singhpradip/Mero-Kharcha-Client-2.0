@@ -5,7 +5,7 @@ import {
   FormLabelProps,
   TypographyProps,
   FormControlLabel,
-  Radio as MuiRadio,
+  Radio,
 } from "@mui/material";
 import { Typography } from "../atoms/Typography";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
@@ -55,10 +55,11 @@ export const RadioGroup = <T extends FieldValues>({
               <FormControlLabel
                 key={option.value}
                 value={option.value}
-                control={<MuiRadio {...radioProps} />}
+                control={<Radio {...radioProps} />}
                 label={
                   <Typography {...radioLabelProps}>{option.label}</Typography>
                 }
+                sx={{ margin: 0 }}
               />
             ))}
           </MuiRadioGroup>
