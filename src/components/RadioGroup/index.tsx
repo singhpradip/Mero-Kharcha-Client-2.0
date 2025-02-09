@@ -7,8 +7,8 @@ import {
   FormControlLabel,
   Radio as MuiRadio,
 } from "@mui/material";
+import { Typography } from "../atoms/Typography";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
-import { Typography } from "../Typography";
 
 interface RadioGroupProps<T extends FieldValues> {
   name: Path<T>;

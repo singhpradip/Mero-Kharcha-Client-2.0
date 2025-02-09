@@ -5,8 +5,8 @@ import {
   FormControlLabelProps,
   TypographyProps,
 } from "@mui/material";
+import { Typography } from "../atoms/Typography";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
-import { Typography } from "../Typography";
 
 interface CustomRadioProps<T extends FieldValues>
   extends Omit<FormControlLabelProps, "control" | "onChange" | "value"> {

@@ -1,6 +1,6 @@
 import { Box, Paper, Stack } from "@mui/material";
 import { Button, DatePicker, Typography, Radio, RadioGroup } from "components";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { LogoPng } from "assets/logos";
 import dayjs, { Dayjs } from "dayjs";
 import { formatDate } from "utils";
@@ -16,14 +16,15 @@ export const Test = () => {
     control,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<FormData>({
     defaultValues: {
       date: dayjs(),
       acceptTerms: false,
-      preferredOption: "option1",
+      preferredOption: "",
     },
   });
-  console.log("errors", errors);
+  console.log(errors);
   const options = [
     { label: "Option 1", value: "option1" },
     { label: "Option 2", value: "option2" },
@@ -48,6 +49,51 @@ export const Test = () => {
         p: 3,
       }}
     >
+      <Paper elevation={3} sx={{ p: 4, borderRadius: 2 }}>
+        <Stack spacing={3}>
+          <Typography variant="h4" color="primary.main" align="center">
+            Sample Form
+          </Typography>
+
+          <DatePicker
+            name="date"
+            control={control}
+            label="Select Date"
+            sx={{ width: 300 }}
+          />
+
+          <RadioGroup
+            name="preferredOption"
+            control={control}
+            label="Select your preference"
+            options={options}
+            labelProps={{
+              sx: { fontWeight: "bold" },
+            }}
+            radioProps={{ color: "primary" }}
+          />
+
+          <Radio
+            name="acceptTerms"
+            control={control}
+            label="I accept the terms and conditions"
+            radioProps={{ color: "primary" }}
+            radioLabelProps={{
+              sx: { fontWeight: "medium" },
+            }}
+          />
+
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            disabled={!watch("acceptTerms")}
+          >
+            Submit Form
+          </Button>
+        </Stack>
+      </Paper>
       <Paper
         elevation={3}
         sx={{
@@ -68,64 +114,6 @@ export const Test = () => {
           </Typography>
         </Stack>
       </Paper>
-      <Paper elevation={3} sx={{ p: 4, borderRadius: 2 }}>
-        <Stack spacing={3}>
-          <Typography variant="h4" color="primary.main" align="center">
-            Sample Form
-          </Typography>
-
-          <Controller
-            name="date"
-            control={control}
-            render={({ field }) => (
-              <DatePicker
-                label="Select Date"
-                value={field.value}
-                onChange={field.onChange}
-              />
-            )}
-          />
-
-          <Controller
-            name="acceptTerms"
-            control={control}
-            render={({ field: { value, onChange } }) => (
-              <Radio
-                label="I accept the terms and conditions"
-                value={value}
-                onChange={(_, checked) => onChange(checked)}
-                radioProps={{ color: "primary" }}
-                radioLabelProps={{
-                  sx: { fontWeight: "medium" },
-                }}
-              />
-            )}
-          />
-
-          <Controller
-            name="preferredOption"
-            control={control}
-            render={({ field: { value, onChange } }) => (
-              <RadioGroup
-                label="Select your preference"
-                options={options}
-                value={value}
-                onChange={onChange}
-                labelProps={{
-                  sx: { fontWeight: "bold" },
-                }}
-                radioProps={{ color: "primary" }}
-              />
-            )}
-          />
-
-          <Button type="submit" variant="contained" color="primary" fullWidth>
-            Submit Form
-          </Button>
-        </Stack>
-      </Paper>
-
-      {/* Logo Section */}
     </Box>
   );
 };
