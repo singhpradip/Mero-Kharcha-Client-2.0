@@ -1,3 +1,9 @@
+import { LogoJpg } from "./assets/logos";
+
 export const App = () => {
-  return <>HI</>;
+  return (
+    <div>
+      <img src={LogoJpg} alt="logo" />
+    </div>
+  );
 };
